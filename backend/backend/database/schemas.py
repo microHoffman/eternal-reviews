@@ -8,6 +8,7 @@ class User(BaseModel):
         orm_mode = True
 
 class Review(BaseModel):
+    id: int
     text: str
     score: int
     user: User
@@ -23,3 +24,8 @@ class Project(BaseModel):
 
     class Config:
         orm_mode = True
+
+class ReviewCreate(BaseModel):
+    score: int
+    text: str
+    address: str
