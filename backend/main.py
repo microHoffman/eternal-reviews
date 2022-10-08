@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from backend.database import crud, schemas
 from backend.database.models import get_db, Project, Base, engine
 
-models.Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
