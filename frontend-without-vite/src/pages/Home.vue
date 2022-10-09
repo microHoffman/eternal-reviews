@@ -1,14 +1,17 @@
 <template>
   <section>
-    <template v-for="project in projects" :key="project.id">
-      <div class="project-preview-wrapper">
-        <h3>{{ project.name }}</h3>
-        <!--<div class="project-preview-description">{{ project.description }}</div>-->
+    <h2 class="heading">Projects with reviews</h2>
+    <div v-for="project in projects" :key="project.id" class="card">
+      <h4 class="card-header">
+        <strong>{{ project.name }}</strong>
+      </h4>
+      <div class="card-body">
         <router-link :to="`/project/${project.id}`">
-          <button>Open project</button>
+          <button class="btn btn-primary">Open project</button>
         </router-link>
       </div>
-    </template>
+    </div>
+    <div class="more-projects-soon">More projects to be added soon!</div>
   </section>
 </template>
 
@@ -24,4 +27,15 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.heading {
+  margin-bottom: 2rem;
+}
+
+.more-projects-soon {
+  margin-top: 3rem;
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+}
+</style>

@@ -2,7 +2,9 @@
   <div v-if="isLoggedIn">
     {{ userAddress }}
   </div>
-  <button v-else @click="connect">Connect wallet</button>
+  <button class="btn btn-primary" v-else @click="connect">
+    Connect wallet
+  </button>
 </template>
 
 <script setup lang="ts">

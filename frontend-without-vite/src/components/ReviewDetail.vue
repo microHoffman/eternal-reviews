@@ -1,9 +1,12 @@
 <template>
-  <article class="review">
-    <header class="review-header">
-      {{ review.score }} {{ review.user.address }}
+  <article class="card">
+    <header class="card-header">
+      <span class="badge rounded-pill text-bg-primary score">
+        {{ review.score }} stars
+      </span>
+      from {{ review.user.address }}
     </header>
-    <div class="review-text">
+    <div class="card-body">
       {{ review.text }}
     </div>
   </article>
@@ -20,4 +23,8 @@ const props = defineProps<Props>();
 const { review } = toRefs(props);
 </script>
 
-<style scoped></style>
+<style scoped>
+.score {
+  margin-right: 0.5rem;
+}
+</style>

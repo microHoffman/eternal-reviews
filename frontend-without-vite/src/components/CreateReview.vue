@@ -1,13 +1,14 @@
 <template>
-  <div v-if="!isLoggedIn">
+  <div v-if="!isLoggedIn" class="alert alert-warning">
     Please log in first in order to be able to create a review.
   </div>
-  <div v-else-if="canUserCreateReview">
+  <div v-else-if="!canUserCreateReview" class="alert alert-danger">
     You can not create a review since you have not interacted with protocol.
   </div>
   <div v-else>
-    You interacted with the protocol, so you are eligible to create a review.
-
+    <div class="alert alert-success">
+      You interacted with the protocol, so you are eligible to create a review.
+    </div>
     <label class="input-wrapper">
       Please input score between 0-5.
       <input type="number" v-model="score" />
@@ -16,7 +17,9 @@
       Please write a text review.
       <input v-model="text" />
     </label>
-    <button @click="sendCreateReview">Send review</button>
+    <button class="btn btn-primary" @click="sendCreateReview">
+      Send review
+    </button>
   </div>
 </template>
 
@@ -27,12 +30,9 @@ import useWeb3 from "../composables/useWeb3";
 import { onMounted, ref, watch } from "vue";
 import { resolveAddress } from "@/utils/ens";
 import to from "@/utils/await-to-js";
+import useSingleProject from "@/composables/useSingleProject";
 
-interface Props {
-  projectId: number;
-}
-const props = defineProps<Props>();
-
+const { project } = useSingleProject();
 const { userAddress, isLoggedIn } = useWeb3();
 
 const canUserCreateReview = ref(false);
@@ -67,17 +67,21 @@ const sendCreateReview = async (): Promise<Review | undefined> => {
     text: text.value,
     address: userAddress.value,
   };
-  const project =
+  const createdReview =
     await DefaultService.createReviewProjectProjectIdCreateReviewPost(
-      props.projectId,
+      project.value.id,
       newReview
     );
+  project.value.reviews.push(createdReview);
+  score.value = null;
+  text.value = "";
 };
 </script>
 
 <style scoped>
 .input-wrapper {
   display: block;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 </style>

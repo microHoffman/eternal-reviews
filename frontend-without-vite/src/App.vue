@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <header class="app-header">
-      <h1 class="main-title">Eternal reviews</h1>
+      <router-link to="/">
+        <h1 class="main-title">Eternal reviews</h1>
+      </router-link>
       <Wallet />
     </header>
     <main>
@@ -18,6 +20,9 @@ import Wallet from "@/components/Wallet.vue";
 .app-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 2rem;
 }
 
 .main-title {
