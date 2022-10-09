@@ -1,6 +1,6 @@
 # ETHernal Reviews
-Dapps rating platform. Only users that interacted with a certain Dapp can rate it. User logs in with his Ethereum address. User can evaluate a project only if there is an activity at his address with relevant contract addresses.
-This should guarantee, that only real users rate Dapps.
+Dapps rating platform. Only users that interacted with a certain Dapp can rate it. User logs in with an ETH address. Users can evaluate a project only if there is an activity at his address with relevant contract addresses.
+This should guarantee that just real users rate Dapps.
 
 ## Current state
 - ENS protocol reviews.
