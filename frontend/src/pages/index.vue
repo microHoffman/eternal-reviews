@@ -6,17 +6,18 @@
 }
 </route>
 
-<script setup>
-import {Project} from "../types/project";
+<script setup lang="ts">
+import type {Project} from "../backend/generated";
+import {fetchProjects} from "../backend/api-consume";
 
 useHead({
   title: 'Eternal reviews',
 })
 
-const projects = ref<Array[Project]>([])
+const projects = ref<Project[]>([])
 
 onMounted(async () => {
-  projects.value = await fetchAllProjects()
+  projects.value = await fetchProjects()
 })
 </script>
 
@@ -25,8 +26,8 @@ onMounted(async () => {
     <template v-for="project in projects">
       <div class="project-preview-wrapper">
         <h3>{{ project.name }}</h3>
-        <div class="project-preview-description">{{ project.description }}</div>
-        <router-link :to="`/project/${project.slug}`">
+        <!--<div class="project-preview-description">{{ project.description }}</div>-->
+        <router-link :to="`/project/${project.id}`">
           <button>Open project</button>
         </router-link>
       </div>

@@ -7,8 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ButtonRepo: typeof import('./src/components/ButtonRepo.vue')['default']
+    CreateReview: typeof import('./src/components/CreateReview.vue')['default']
+    ReviewDetail: typeof import('./src/components/ReviewDetail.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Wallet: typeof import('./src/components/Wallet.vue')['default']
   }
 }

@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
   <div>
     <header class="app-header">
@@ -13,6 +9,10 @@
     </main>
   </div>
 </template>
+
+<script setup lang="ts">
+import Wallet from "@/components/Wallet.vue";
+</script>
 
 <style scoped>
 .app-header {

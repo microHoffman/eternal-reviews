@@ -1,11 +1,13 @@
 from pydantic import BaseModel
 
+
 class User(BaseModel):
     id: int
     address: str
 
     class Config:
         orm_mode = True
+
 
 class Review(BaseModel):
     id: int
@@ -16,14 +18,16 @@ class Review(BaseModel):
     class Config:
         orm_mode = True
 
+
 class Project(BaseModel):
     id: int
     name: str
     slug: str
-    reviews: list[Review]
+    reviews: list[Review] = []
 
     class Config:
         orm_mode = True
+
 
 class ReviewCreate(BaseModel):
     score: int

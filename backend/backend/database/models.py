@@ -8,6 +8,7 @@ Base = declarative_base()
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={'check_same_thread': False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+
 class Project(Base):
     __tablename__ = "projects"
 
@@ -17,6 +18,7 @@ class Project(Base):
 
     reviews = relationship("Review", back_populates="project")
 
+
 class User(Base):
     __tablename__ = "users"
 
@@ -24,6 +26,7 @@ class User(Base):
     address = Column(String, unique=True, index=True)
 
     reviews = relationship("Review", back_populates="user")
+
 
 class Review(Base):
     __tablename__ = "reviews"
@@ -36,6 +39,7 @@ class Review(Base):
 
     user = relationship("User", back_populates="reviews")
     project = relationship("Project", back_populates="reviews")
+
 
 def get_db() -> Session:
     db = SessionLocal()
