@@ -2,7 +2,7 @@ import { DefaultService, OpenAPI } from "./generated";
 import type { Project, Review, ReviewCreate } from "./generated";
 
 export const setupBackendApi = (): void => {
-  OpenAPI.BASE = "http://127.0.0.1:8000";
+  OpenAPI.BASE = "http://13.38.130.243";
 };
 
 export const fetchProjects = async (): Promise<Project[]> => {
